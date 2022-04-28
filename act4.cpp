@@ -80,15 +80,15 @@ int main() {
 			cin >> cookie[i];
 	
     // add your code below
-	mergeSort(greed, 0, n);
-	mergeSort(cookie, 0, m);
+	mergeSort(greed, 1, n);
+	mergeSort(cookie, 1, m);
 	
 	int ci = 1;
 	
 	for (int i = 1; i <= n; i++) {
 		while (greed[i] > cookie[ci])
 			ci++;
-		if (ci <= m)
+		if (ci < m)
 			maxContent++;
 	}
 	
