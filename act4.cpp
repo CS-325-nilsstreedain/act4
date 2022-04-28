@@ -73,23 +73,25 @@ int main() {
 	
 	// get values for greed and cookie sizes
     cin >> n;
-	for (int i = 1; i <= n; i++)
+	for (int i = 0; i < n; i++)
 			cin >> greed[i];
 	cin >> m;
-	for (int i = 1; i <= m; i++)
+	for (int i = 0; i < m; i++)
 			cin >> cookie[i];
 	
     // add your code below
-	mergeSort(greed, 1, n);
-	mergeSort(cookie, 1, m);
+	mergeSort(greed, 0, n - 1);
+	mergeSort(cookie, 0, m - 1);
 	
-	int ci = 1;
+	int ci = 0;
 	
-	for (int i = 1; i <= n; i++) {
+	for (int i = 0; i < n; i++) {
 		while (greed[i] > cookie[ci])
 			ci++;
-		if (ci < m)
+		if (ci < m) {
 			maxContent++;
+			ci++;
+		}
 	}
 	
 	// output result
