@@ -15,8 +15,7 @@ Save file as act4.cpp before submitting to Gradescope
 #include <fstream>
 using namespace std;
 
-void merge(int A[], int l, int m, int r) 
-{ 
+void merge(int A[], int l, int m, int r) {
   // Merge function for mergesort. Merges two sorted lists in increasing order
     int i, j, k; 
     int n1 = m - l + 1; 
@@ -30,28 +29,22 @@ void merge(int A[], int l, int m, int r)
     i = 0; // Initial index of first subarray 
     j = 0; // Initial index of second subarray 
     k = l; // Initial index of merged subarray 
-    while (i < n1 && j < n2) 
-    { 
-        if (L[i] <= R[j]) 
-        { 
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
             A[k] = L[i]; 
             i++; 
-        } 
-        else
-        { 
+        } else {
             A[k] = R[j]; 
             j++; 
         } 
         k++; 
     }  
-    while (i < n1) 
-    { 
+    while (i < n1) {
         A[k] = L[i]; 
         i++; 
         k++; 
     }  
-    while (j < n2) 
-    { 
+    while (j < n2) {
         A[k] = R[j]; 
         j++; 
         k++; 
@@ -59,10 +52,8 @@ void merge(int A[], int l, int m, int r)
 } 
   
 /* l = left index and r = index of the array A to be sorted increasing order */ 
-void mergeSort(int A[], int l, int r) 
-{ 
-    if (l < r) 
-    { 
+void mergeSort(int A[], int l, int r) {
+    if (l < r) {
         int m = l+(r-l)/2; 
   
         // Sort first and second halves 
@@ -73,8 +64,7 @@ void mergeSort(int A[], int l, int r)
 } 
 
 
-int main()
-{
+int main() {
 	int greed[1000];     // childs' cookie greed for children 1..n
 	int cookie[1000];    // cookie size for cookies 1..m
 	int maxContent = 0; // maximum number of content children
@@ -83,19 +73,27 @@ int main()
 	
 	// get values for greed and cookie sizes
     cin >> n;
-	for (int i = 1; i <= n; i++) {
+	for (int i = 1; i <= n; i++)
 			cin >> greed[i];
-    }
 	cin >> m;
-	for (int i = 1; i <= m; i++) {
+	for (int i = 1; i <= m; i++)
 			cin >> cookie[i];
-    }	
+	
     // add your code below
+	mergeSort(greed, 0, n);
+	mergeSort(cookie, 0, m);
 	
+	int ci = 1;
 	
+	for (int i = 1; i < n; i++) {
+		while (greed[i] > cookie[ci])
+			ci++;
+		if (ci < m)
+			maxContent++;
+	}
 	
 	// output result
-	cout << "Max contentment = "<<maxContent<<endl;
+	cout << "Max contentment = " << maxContent << endl;
 
     return 1;
 } 
