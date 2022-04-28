@@ -85,7 +85,7 @@ int main() {
 	
 	int ci = 1;
 	
-	for (int i = 1; i < n; i++) {
+	for (int i = 1; i <= n; i++) {
 		while (greed[i] > cookie[ci])
 			ci++;
 		if (ci <= m)
